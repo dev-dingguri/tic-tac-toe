@@ -88,9 +88,15 @@ class Game extends React.Component {
       } else {
         desc = 'Go to game start';
       }
+      const selected = move === this.state.stepNumber;
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button
+            className={`history ${selected ? 'selected' : ''}`}
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </button>
         </li>
       );
     });
