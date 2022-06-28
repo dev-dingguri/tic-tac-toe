@@ -4,7 +4,7 @@ body {
 }
 
 ol, ul {
-  padding-left: 30px;
+  padding-left: 0px;
 }
 
 .board-row:after {
@@ -34,6 +34,11 @@ ol, ul {
 
 .square:focus {
   outline: none;
+}
+
+.history {
+  padding-top: 10px;
+  padding-left: 30px;
 }
 
 .history-item.selected,

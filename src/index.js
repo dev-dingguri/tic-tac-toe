@@ -45,6 +45,7 @@ class Game extends React.Component {
       history: [{ squares: Array(9).fill(null), row: null, col: null }],
       stepNumber: 0,
       xIsNext: true,
+      isAsc: true,
     };
   }
 
@@ -65,6 +66,10 @@ class Game extends React.Component {
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
+  }
+
+  handleToggleOrder() {
+    this.setState({ isAsc: !this.state.isAsc });
   }
 
   jumpTo(step) {
@@ -108,7 +113,12 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <div className="history">
+            <button onClick={() => this.handleToggleOrder()}>
+              {this.state.isAsc ? '⬇' : '⬆'}
+            </button>
+            <ol>{this.state.isAsc ? moves : moves.reverse()}</ol>
+          </div>
         </div>
       </div>
     );
