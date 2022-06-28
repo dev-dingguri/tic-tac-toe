@@ -36,7 +36,8 @@ ol, ul {
   outline: none;
 }
 
-.history.selected {
+.history-item.selected,
+.history-item.selected button {
   font-weight: bold;
 }
 

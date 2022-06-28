@@ -85,13 +85,8 @@ class Game extends React.Component {
       }
       const selected = move === this.state.stepNumber;
       return (
-        <li key={move}>
-          <button
-            className={`history ${selected ? 'selected' : ''}`}
-            onClick={() => this.jumpTo(move)}
-          >
-            {desc}
-          </button>
+        <li key={move} className={`history-item ${selected ? 'selected' : ''}`}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
