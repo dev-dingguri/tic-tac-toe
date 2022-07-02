@@ -64,17 +64,17 @@ class Game extends React.Component {
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
+    this.setState((state) => ({
       history: history.concat([
         { squares: squares, row: Math.floor(i / 3) + 1, col: (i % 3) + 1 },
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
-    });
+      xIsNext: !state.xIsNext,
+    }));
   }
 
   handleToggleOrder() {
-    this.setState({ isAsc: !this.state.isAsc });
+    this.setState((state) => ({ isAsc: !state.isAsc }));
   }
 
   jumpTo(step) {
