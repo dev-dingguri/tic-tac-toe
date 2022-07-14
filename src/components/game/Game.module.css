@@ -1,0 +1,26 @@
+.status {
+  margin-bottom: 10px;
+}
+
+.history {
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.historyItem.selected,
+.historyItem.selected button {
+  font-weight: bold;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .gameBoard {
+
+} */
+
+.gameInfo {
+  margin-left: 20px;
+}
