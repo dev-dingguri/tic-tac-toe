@@ -5,5 +5,5 @@ import Game from './components/game/Game';
 
 // =============================================
 
-const root = createRoot(document.querySelector('#root'));
+const root = createRoot(document.querySelector('#root') as HTMLElement);
 root.render(<Game />);

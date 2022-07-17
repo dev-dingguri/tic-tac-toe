@@ -1,7 +1,12 @@
 import React from 'react';
 import styles from './Square.module.css';
 
-const Square = (props) => {
+type SquareProps = {
+  value: string | null,
+  isCaused: boolean,
+  onClick: () => void;
+}
+const Square = (props: SquareProps) => {
   return (
     <button
       className={`${styles.square} ${props.isCaused ? styles.caused : ''}`}

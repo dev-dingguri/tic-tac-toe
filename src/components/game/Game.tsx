@@ -3,14 +3,19 @@ import Board from '../board/Board';
 import styles from './Game.module.css';
 
 const Game = () => {
-  const [history, setHistory] = useState([
+  type History = {
+    squares: (string | null)[],
+    row: number | null,
+    col: number | null
+  }[];
+  const [history, setHistory] = useState<History>([
     { squares: Array(9).fill(null), row: null, col: null },
   ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
   const [isAsc, setIsAsc] = useState(true);
 
-  const handleClick = (i) => {
+  const handleClick = (i: number) => {
     // 배열의 복사본을 생성하여 수정
     // https://ko.reactjs.org/tutorial/tutorial.html#why-immutability-is-important
     const newHistory = history.slice(0, stepNumber + 1);
@@ -33,15 +38,17 @@ const Game = () => {
     setIsAsc(!isAsc);
   };
 
-  const jumpTo = (step) => {
+  const jumpTo = (step: number) => {
     setStepNumber(step);
     setXIsNext(step % 2 === 0);
   };
 
   const current = history[stepNumber];
   const matchResult = calculateWinner(current.squares);
-  const { winner, caused } = matchResult ? matchResult : [];
-
+  const { winner, caused }: {
+    winner: string | null;
+    caused: number[];
+  } = matchResult ? matchResult : { winner: null, caused: [] };
   const moves = history.map((step, move) => {
     let desc;
     if (move) {
@@ -89,7 +96,7 @@ const Game = () => {
   );
 };
 
-const calculateWinner = (squares) => {
+const calculateWinner = (squares: (string | null)[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
